@@ -1,36 +1,35 @@
-# 忍者バトル操作ガイド
+# Ninjutsu Gameplay Guide
 
-本プロジェクトに追加された忍術システムや操作方法をまとめました。Unity エディター上でプレイする際の参考にしてください。
+This document summarizes how to play with the bundled ninjutsu system while running the project inside the Unity editor.
 
-## 基本操作
-- **移動**: `A` / `D` または ← / → キーで左右に移動します。速度と加速は `PlayerController` の `Move Speed` と `Acceleration` で調整できます。
-- **ジャンプ**: `Space` キーでジャンプします。ジャンプ力は `Jump Force` で設定できます。
-- **スクロール補充**: `↑` キーを押すと、忍術スロットが空になるまで自動でスクロール（属性）を補充します。属性は火・水・風の3種類がバランスよく配布されます。
-- **忍術発動**: `←` キーで、現在のスロット構成に応じた忍術を発動します。発動位置は `Projectile Spawn Point` に設定したトランスフォームを基準にします。
+## Core Controls
+- **Move**: `A` / `D` or the left and right arrow keys. Tune top speed and acceleration from the `PlayerController` component.
+- **Jump**: Press `Space`. Adjust jump strength with the `Jump Force` field.
+- **Reload Scrolls**: Press the up arrow to refill empty ninjutsu slots. Elements are distributed evenly across fire, water, and wind.
+- **Cast Ninjutsu**: Press the left arrow. Abilities spawn from the optional `Projectile Spawn Point`; otherwise they originate at the player.
 
-## 忍術スロットとコンボ
-`NinjutsuManager` はプレイヤーの忍術スロットを管理し、以下の順番で発動内容を判定します。
+## Slot Logic and Ability Table
+`NinjutsuManager` inspects the filled slots from the top and resolves the strongest valid option.
 
-1. **コンボ判定**: 先頭の2枠をチェックし、下記の属性ペアと一致した場合はコンボ忍術が発動します。
-   | 組み合わせ | 忍術 | 効果概要 |
+1. **Combo check** – If the first two slots match one of the pairs below, that combo fires and consumes both slots.
+   | Pair | Ability | Effect |
    | --- | --- | --- |
-   | 火 + 火 | 火炎防壁 (`FireFireBarrier`) | 周囲に複数回ダメージパルスを発生させます。範囲は `Fire Fire Radius`、ヒット回数は `Fire Fire Hits` で調整可能です。 |
-   | 水 + 風 | 水風竜巻 (`WaterWindTornado`) | 前方に竜巻エフェクトを生成し、持続的に接触ダメージを与えます。幅と持続時間は `Tornado Width`、`Tornado Duration` で設定します。 |
-   | 風 + 火 | 風火火球 (`WindFireFireball`) | 前方へ火球を射出します。速度は `Fireball Speed` で管理されます。 |
-2. **単属性判定**: コンボに該当しない場合、先頭1枠のみを消費して以下の単体忍術を発動します。
-   | 属性 | 忍術 | 効果概要 |
+   | Fire + Fire | FireFireBarrier | Emits repeated area pulses. Tune radius (`Fire Fire Radius`) and hit count (`Fire Fire Hits`). |
+   | Water + Wind | WaterWindTornado | Spawns a forward-moving tornado. Adjust width (`Tornado Width`) and duration (`Tornado Duration`). |
+   | Wind + Fire | WindFireFireball | Launches a fireball. Control its speed with `Fireball Speed`. |
+2. **Single element** – If no combo matches, only the first slot is consumed according to this table.
+   | Element | Ability | Effect |
    | --- | --- | --- |
-   | 火 | 爆炎 (`FireExplosion`) | 即座に周囲へ広範囲のダメージパルスを放ちます。範囲は `Fire Single Radius` を参照します。 |
-   | 水 | 水矢 (`WaterArrows`) | 3方向に水矢を放ち、各矢は近くの敵を追尾します。速度と拡散角は `Water Arrow Speed`、`Water Arrow Spread` で調整できます。 |
-   | 風 | 風盾 (`WindShield`) | プレイヤーの周囲に防御シールドを生成し、接触した敵にダメージを与えつつ押し返します。半径は `Wind Shield Radius` を利用します。 |
+   | Fire | FireExplosion | Triggers an instant explosion using `Fire Single Radius`. |
+   | Water | WaterArrows | Fires three homing water arrows. Configure with `Water Arrow Speed` and `Water Arrow Spread`. |
+   | Wind | WindShield | Summons a rotating shield whose radius comes from `Wind Shield Radius`. |
 
-忍術を発動すると使用した属性はスロットから消費され、同時に内部的な属性バランスカウンターも減少します。これにより次回補充時には不足している属性が優先され、偏りを防ぎます。
+Each activation decrements the internal balance counters so the next reload favors underrepresented elements.
 
-## UI とパラメーター調整
-- **ハートUI (`HeartUIController`)**: `Health` コンポーネントと連動して現在のHPをハートアイコンで表示します。ハートの最大数やスプライトはインスペクター上で設定します。
-- **忍術スロットUI (`NinjutsuSlotUI`)**: スロットの属性を色分けで表示します。必要なスロット数やアイコンは `NinjutsuManager` から通知され、自動で更新されます。
-- **ダメージ判定**: `IDamageable` インターフェースを実装したオブジェクトが忍術のダメージを受けられます。`AreaDamageEmitter`、`Projectile`、`WindShield` などはこのインターフェースを通じてダメージを与えます。
+## UI and Supporting Scripts
+- **Health UI** (`HeartUIController`) keeps the heart icons in sync with the `Health` component living inside `PlayerController`.
+- **Slot UI** (`NinjutsuSlotUI`) visualizes current elements and fades empty slots.
+- **Damage Routing**: Runtime abilities call `IDamageable.TakeDamage`, which is implemented by `Health`. All combat scripts now live in `NinjutsuManager.cs`, while player logic (including `Health` and `IDamageable`) sits in `PlayerController.cs`, and UI scripts share `HeartUIController.cs`.
 
-## テストの進め方
-Unity エディターでプレイモードに入り、上記キー操作を試して挙動を確認してください。パラメーターを変更した場合は、インスペクターで値を調整しながら期待通りのバランスになるか都度テストするのがおすすめです。
-
+## Testing Tips
+Enter Play Mode in the Unity editor and verify each control. When tuning values, keep the inspector open so you can iterate quickly and confirm balance changes immediately.

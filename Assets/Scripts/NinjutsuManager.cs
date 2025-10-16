@@ -1,9 +1,322 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace NinjaGame
 {
+    public enum NinjutsuElement
+    {
+        Fire,
+        Water,
+        Wind
+    }
+
+    public enum NinjutsuAbilityId
+    {
+        FireFireBarrier,
+        WaterWindTornado,
+        WindFireFireball,
+        FireExplosion,
+        WaterArrows,
+        WindShield
+    }
+
+    public struct AbilityContext
+    {
+        public Vector3 Origin;
+        public bool FacingRight;
+        public float FireFireRadius;
+        public int FireFireHits;
+        public float FireballSpeed;
+        public float FireSingleRadius;
+        public float TornadoDuration;
+        public float TornadoWidth;
+        public float WindShieldRadius;
+        public float WaterArrowSpeed;
+        public float WaterArrowSpread;
+    }
+
+    public abstract class AbilityEffect : MonoBehaviour
+    {
+        public abstract void Configure(NinjutsuAbilityId abilityId, AbilityContext context);
+    }
+
+    [RequireComponent(typeof(CircleCollider2D))]
+    public class AreaDamageEmitter : MonoBehaviour
+    {
+        [SerializeField] private float radius = 5f;
+        [SerializeField] private int pulseCount = 3;
+        [SerializeField] private float delayBetweenPulses = 0.35f;
+        [SerializeField] private float lifetime = 1f;
+        [SerializeField] private float damagePerPulse = 1f;
+
+        private CircleCollider2D areaCollider;
+
+        public Transform Owner { get; set; }
+        public float Radius { get => radius; set => radius = value; }
+        public int PulseCount { get => pulseCount; set => pulseCount = Mathf.Max(1, value); }
+        public float DelayBetweenPulses { get => delayBetweenPulses; set => delayBetweenPulses = value; }
+        public float Lifetime { get => lifetime; set => lifetime = value; }
+        public float DamagePerPulse { get => damagePerPulse; set => damagePerPulse = value; }
+
+        private void Awake()
+        {
+            areaCollider = GetComponent<CircleCollider2D>();
+            areaCollider.isTrigger = true;
+        }
+
+        private void OnEnable()
+        {
+            areaCollider.radius = radius;
+            transform.localScale = Vector3.one * radius;
+            StartCoroutine(PulseDamage());
+            Destroy(gameObject, lifetime);
+        }
+
+        private IEnumerator PulseDamage()
+        {
+            for (int i = 0; i < pulseCount; i++)
+            {
+                Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, radius);
+                foreach (Collider2D hit in hits)
+                {
+                    if (Owner != null && hit.transform == Owner)
+                    {
+                        continue;
+                    }
+
+                    if (hit.TryGetComponent<IDamageable>(out IDamageable damageable))
+                    {
+                        damageable.TakeDamage(damagePerPulse);
+                    }
+                }
+
+                if (delayBetweenPulses > 0.001f)
+                {
+                    yield return new WaitForSeconds(delayBetweenPulses);
+                }
+            }
+        }
+
+#if UNITY_EDITOR
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.color = new Color(1f, 0.4f, 0f, 0.3f);
+            Gizmos.DrawSphere(transform.position, radius);
+        }
+#endif
+    }
+
+    [RequireComponent(typeof(CircleCollider2D))]
+    public class Projectile : MonoBehaviour
+    {
+        [SerializeField] private float speed = 10f;
+        [SerializeField] private Vector2 direction = Vector2.right;
+        [SerializeField] private float damage = 1f;
+        [SerializeField] private float lifetime = 4f;
+        [SerializeField] private bool destroyOnImpact = true;
+        [SerializeField] private bool isHoming;
+        [SerializeField] private float homingRotationSpeed = 360f;
+        [SerializeField] private float homingSearchRadius = 12f;
+
+        private float timeAlive;
+        public Transform Owner { get; set; }
+        public float Speed { get => speed; set => speed = value; }
+        public Vector2 Direction { get => direction; set => direction = value.normalized; }
+        public float Damage { get => damage; set => damage = value; }
+        public float Lifetime { get => lifetime; set => lifetime = value; }
+        public bool IsHoming { get => isHoming; set => isHoming = value; }
+
+        private void Awake()
+        {
+            Rigidbody2D body = gameObject.AddComponent<Rigidbody2D>();
+            body.isKinematic = true;
+            CircleCollider2D collider = GetComponent<CircleCollider2D>();
+            collider.isTrigger = true;
+            collider.radius = 0.25f;
+        }
+
+        private void Update()
+        {
+            timeAlive += Time.deltaTime;
+            if (timeAlive >= lifetime)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
+            if (isHoming)
+            {
+                UpdateHomingDirection();
+            }
+
+            Vector3 displacement = (Vector3)direction.normalized * speed * Time.deltaTime;
+            transform.Translate(displacement, Space.World);
+        }
+
+        private void UpdateHomingDirection()
+        {
+            Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, homingSearchRadius);
+            Transform bestTarget = null;
+            float bestScore = float.MaxValue;
+            foreach (Collider2D hit in hits)
+            {
+                if (hit.transform == Owner)
+                {
+                    continue;
+                }
+
+                if (!hit.TryGetComponent<IDamageable>(out _))
+                {
+                    continue;
+                }
+
+                float score = Vector2.Distance(hit.transform.position, transform.position);
+                if (score < bestScore)
+                {
+                    bestScore = score;
+                    bestTarget = hit.transform;
+                }
+            }
+
+            if (bestTarget == null)
+            {
+                return;
+            }
+
+            Vector2 toTarget = (bestTarget.position - transform.position).normalized;
+            float angle = Vector3.SignedAngle(direction, toTarget, Vector3.forward);
+            float rotationStep = Mathf.Sign(angle) * Mathf.Min(Mathf.Abs(angle), homingRotationSpeed * Time.deltaTime);
+            direction = Quaternion.Euler(0f, 0f, rotationStep) * direction;
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (Owner != null && other.transform == Owner)
+            {
+                return;
+            }
+
+            if (!other.TryGetComponent<IDamageable>(out IDamageable damageable))
+            {
+                return;
+            }
+
+            damageable.TakeDamage(damage);
+
+            if (destroyOnImpact)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
+
+    [RequireComponent(typeof(BoxCollider2D))]
+    public class TornadoEffect : MonoBehaviour
+    {
+        [SerializeField] private float duration = 20f;
+        [SerializeField] private float damagePerSecond = 0.35f;
+        [SerializeField] private float width = 3f;
+        [SerializeField] private float moveSpeed = 2f;
+
+        private float timeAlive;
+        private BoxCollider2D boxCollider;
+
+        public Transform Owner { get; set; }
+        public float Duration { get => duration; set => duration = value; }
+        public float Width { get => width; set => width = value; }
+        public Vector2 Direction { get; set; } = Vector2.right;
+
+        private void Awake()
+        {
+            boxCollider = GetComponent<BoxCollider2D>();
+            boxCollider.isTrigger = true;
+        }
+
+        private void OnEnable()
+        {
+            transform.localScale = new Vector3(width, transform.localScale.y, transform.localScale.z);
+        }
+
+        private void Update()
+        {
+            timeAlive += Time.deltaTime;
+            if (timeAlive >= duration)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
+            Vector3 displacement = (Vector3)Direction.normalized * moveSpeed * Time.deltaTime;
+            transform.Translate(displacement, Space.World);
+        }
+
+        private void OnTriggerStay2D(Collider2D other)
+        {
+            if (Owner != null && other.transform == Owner)
+            {
+                return;
+            }
+
+            if (!other.TryGetComponent<IDamageable>(out IDamageable damageable))
+            {
+                return;
+            }
+
+            damageable.TakeDamage(damagePerSecond * Time.deltaTime);
+        }
+    }
+
+    [RequireComponent(typeof(CircleCollider2D))]
+    public class WindShield : MonoBehaviour
+    {
+        [SerializeField] private float radius = 2f;
+        [SerializeField] private float damagePerSecond = 0.5f;
+        [SerializeField] private float lifetime = 8f;
+        [SerializeField] private float rotationSpeed = 90f;
+
+        public Transform Owner { get; set; }
+        public float Radius { get => radius; set => radius = value; }
+
+        private void Awake()
+        {
+            CircleCollider2D collider = GetComponent<CircleCollider2D>();
+            collider.isTrigger = true;
+        }
+
+        private void Start()
+        {
+            if (Owner != null)
+            {
+                transform.SetParent(Owner);
+                transform.localPosition = Vector3.zero;
+            }
+            transform.localScale = Vector3.one * radius;
+            Destroy(gameObject, lifetime);
+        }
+
+        private void Update()
+        {
+            transform.Rotate(Vector3.forward, rotationSpeed * Time.deltaTime);
+        }
+
+        private void OnTriggerStay2D(Collider2D other)
+        {
+            if (Owner != null && other.transform == Owner)
+            {
+                return;
+            }
+
+            if (!other.TryGetComponent<IDamageable>(out IDamageable damageable))
+            {
+                return;
+            }
+
+            damageable.TakeDamage(damagePerSecond * Time.deltaTime);
+        }
+    }
+
     [DisallowMultipleComponent]
     public class NinjutsuManager : MonoBehaviour
     {
@@ -340,3 +653,4 @@ namespace NinjaGame
         }
     }
 }
+
