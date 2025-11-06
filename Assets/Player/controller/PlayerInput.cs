@@ -6,7 +6,7 @@ public class PlayerInput : MonoBehaviour
     // s“®‚ğˆ—‚·‚éƒXƒNƒŠƒvƒg‚Ö‚ÌQÆ
     private PlayerMovement movement;
     private PlayerAttacker attacker; // y’Ç‰ÁzUŒ‚ƒXƒNƒŠƒvƒg‚ÌQÆ
-    private NinjutsuHandler ninjutsuHandler;
+
 
 
     void Start()
@@ -14,7 +14,13 @@ public class PlayerInput : MonoBehaviour
         // “¯‚¶ƒQ[ƒ€ƒIƒuƒWƒFƒNƒg‚ÉƒAƒ^ƒbƒ`‚³‚ê‚Ä‚¢‚é‘¼‚ÌƒXƒNƒŠƒvƒg‚ğæ“¾
         movement = GetComponent<PlayerMovement>();
         attacker = GetComponent<PlayerAttacker>(); // y’Ç‰ÁzPlayerAttacker‚ÌQÆ‚ğæ“¾
+<<<<<<<< HEAD:Assets/Player/controller/PlayerInput.cs
         ninjutsuHandler = GetComponent<NinjutsuHandler>();
+========
+       
+
+       
+>>>>>>>> 0b19ef9 (ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—):Assets/Player/PlayerInput.cs
     }
 
     void Update()
@@ -77,6 +83,7 @@ public class PlayerInput : MonoBehaviour
             }
         }
 
+<<<<<<<< HEAD:Assets/Player/controller/PlayerInput.cs
         if (Input.GetKeyDown(KeyCode.R))
         {
             // yV‹KzƒfƒoƒbƒOƒƒO‚Ì’Ç‰Á
@@ -86,3 +93,9 @@ public class PlayerInput : MonoBehaviour
 
     }
 }
+========
+    }
+
+}
+
+>>>>>>>> 0b19ef9 (ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—):Assets/Player/PlayerInput.cs
