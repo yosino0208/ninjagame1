@@ -3,19 +3,21 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ground
+  - Destructible
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Ground
+  - Camera
   - Water
   - UI
   - 
   - 
-  - 
-  - 
-  - 
+  - PLAYER
+  - ENEMY
+  - PLAYER_ATTACK
   - 
   - 
   - 

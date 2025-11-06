@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be61d99d43feb024da029a7e567f7a65, type: 3}
+  m_Name: TripleWaterNinjutsu
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 6213205160602711039, guid: ea8b70c2981f6cc42a20b599e93a915c, type: 3}
+  ninjutsuName: "\u8907\u5408\u6280"
+  type: 2
+  baseDamage: 3
+  duration: 0.5
+  range: 1
+  speed: 30
+  launchOffset: 1.5
+  totalDrops: 5
+  dropInterval: 0.1
+  rainHeight: 10
