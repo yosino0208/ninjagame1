@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b607477d36a10a34f826c88ae9b7fe5a, type: 3}
+  m_Name: TeruTeruData
+  m_EditorClassIdentifier: 
+  enemyName: Unknown Enemy
+  maxHP: 3
+  attackDamage: 1
+  moveSpeed: 3
+  detectionRange: 3
+  moveComponentNames:
+  - FloatMove
+  attackComponentNames:
+  - RangedAttack_Water
+  projectilePrefab: {fileID: 8501790350191461097, guid: 2c9487470434490429fd44e07e2af7f9, type: 3}
