@@ -391,10 +391,14 @@ BoxCollider2D:
   m_UsedByComposite: 0
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_Offset: {x: 0, y: -0.014917031}
 =======
   m_Offset: {x: 0, y: 0}
 >>>>>>> 06299d3 (test)
+=======
+  m_Offset: {x: 0, y: -0.014917031}
+>>>>>>> 0b19ef9 (プロトタイプ)
 =======
   m_Offset: {x: 0, y: -0.014917031}
 >>>>>>> 0b19ef9 (プロトタイプ)
@@ -408,6 +412,7 @@ BoxCollider2D:
     adaptiveTiling: 0
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 0.97016597}
@@ -416,6 +421,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.06, y: 1}
 >>>>>>> 06299d3 (test)
+=======
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.97016597}
+>>>>>>> 0b19ef9 (プロトタイプ)
 =======
   m_AutoTiling: 0
   serializedVersion: 2
@@ -709,6 +719,9 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 0b19ef9 (プロトタイプ)
 =======
 >>>>>>> 0b19ef9 (プロトタイプ)
 --- !u!114 &938683657
@@ -846,9 +859,12 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 890407334872bcc409f1080e279c5749, type: 3}
 --- !u!1 &1998194545
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 --- !u!1 &927082100
 >>>>>>> 06299d3 (test)
+=======
+>>>>>>> 0b19ef9 (プロトタイプ)
 =======
 >>>>>>> 0b19ef9 (プロトタイプ)
 GameObject:
@@ -860,6 +876,9 @@ GameObject:
   m_Component:
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 0b19ef9 (プロトタイプ)
 =======
 >>>>>>> 0b19ef9 (プロトタイプ)
   - component: {fileID: 1998194546}
@@ -868,6 +887,7 @@ GameObject:
   m_Layer: 5
   m_Name: Image
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   - component: {fileID: 927082101}
   m_Layer: 0
@@ -875,11 +895,14 @@ GameObject:
 >>>>>>> 06299d3 (test)
 =======
 >>>>>>> 0b19ef9 (プロトタイプ)
+=======
+>>>>>>> 0b19ef9 (プロトタイプ)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 --- !u!224 &1998194546
@@ -892,12 +915,19 @@ Transform:
 --- !u!224 &1998194546
 RectTransform:
 >>>>>>> 0b19ef9 (プロトタイプ)
+=======
+--- !u!224 &1998194546
+RectTransform:
+>>>>>>> 0b19ef9 (プロトタイプ)
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 0b19ef9 (プロトタイプ)
 =======
 >>>>>>> 0b19ef9 (プロトタイプ)
   m_GameObject: {fileID: 1998194545}
@@ -953,6 +983,7 @@ CanvasRenderer:
   m_CullTransparentMesh: 1
 --- !u!1 &2086715316
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   m_GameObject: {fileID: 927082100}
   serializedVersion: 2
@@ -967,6 +998,8 @@ CanvasRenderer:
 >>>>>>> 06299d3 (test)
 =======
 >>>>>>> 0b19ef9 (プロトタイプ)
+=======
+>>>>>>> 0b19ef9 (プロトタイプ)
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -976,6 +1009,9 @@ GameObject:
   m_Component:
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 0b19ef9 (プロトタイプ)
 =======
 >>>>>>> 0b19ef9 (プロトタイプ)
   - component: {fileID: 2086715323}
@@ -993,6 +1029,7 @@ GameObject:
   m_Name: "\u5FCD\u8005"
   m_TagString: Player
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   - component: {fileID: 1020514475}
   - component: {fileID: 1020514474}
@@ -1005,10 +1042,13 @@ GameObject:
 >>>>>>> 06299d3 (test)
 =======
 >>>>>>> 0b19ef9 (プロトタイプ)
+=======
+>>>>>>> 0b19ef9 (プロトタイプ)
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 --- !u!50 &2086715317
@@ -1040,12 +1080,16 @@ MonoBehaviour:
 =======
 --- !u!50 &2086715317
 >>>>>>> 0b19ef9 (プロトタイプ)
+=======
+--- !u!50 &2086715317
+>>>>>>> 0b19ef9 (プロトタイプ)
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
   m_GameObject: {fileID: 2086715316}
@@ -1055,12 +1099,18 @@ Rigidbody2D:
 =======
   m_GameObject: {fileID: 2086715316}
 >>>>>>> 0b19ef9 (プロトタイプ)
+=======
+  m_GameObject: {fileID: 2086715316}
+>>>>>>> 0b19ef9 (プロトタイプ)
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 0b19ef9 (プロトタイプ)
 =======
 >>>>>>> 0b19ef9 (プロトタイプ)
   m_Mass: 1
@@ -1068,12 +1118,15 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 1
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   m_Mass: 1.5991981
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
 >>>>>>> 06299d3 (test)
+=======
+>>>>>>> 0b19ef9 (プロトタイプ)
 =======
 >>>>>>> 0b19ef9 (プロトタイプ)
   m_Material: {fileID: 0}
@@ -1088,6 +1141,9 @@ Rigidbody2D:
   m_CollisionDetection: 0
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 0b19ef9 (プロトタイプ)
 =======
 >>>>>>> 0b19ef9 (プロトタイプ)
   m_Constraints: 4
@@ -1178,10 +1234,13 @@ BoxCollider2D:
   m_EdgeRadius: 0
 --- !u!212 &2086715322
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   m_Constraints: 0
 --- !u!212 &1020514474
 >>>>>>> 06299d3 (test)
+=======
+>>>>>>> 0b19ef9 (プロトタイプ)
 =======
 >>>>>>> 0b19ef9 (プロトタイプ)
 SpriteRenderer:
@@ -1191,10 +1250,14 @@ SpriteRenderer:
   m_PrefabAsset: {fileID: 0}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_GameObject: {fileID: 2086715316}
 =======
   m_GameObject: {fileID: 1020514471}
 >>>>>>> 06299d3 (test)
+=======
+  m_GameObject: {fileID: 2086715316}
+>>>>>>> 0b19ef9 (プロトタイプ)
 =======
   m_GameObject: {fileID: 2086715316}
 >>>>>>> 0b19ef9 (プロトタイプ)
@@ -1234,10 +1297,14 @@ SpriteRenderer:
   m_SortingOrder: 0
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_Sprite: {fileID: 2245057889504884635, guid: 7a7db2e2ec2f6e54ca65c67f5d3cca90, type: 3}
 =======
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
 >>>>>>> 06299d3 (test)
+=======
+  m_Sprite: {fileID: 2245057889504884635, guid: 7a7db2e2ec2f6e54ca65c67f5d3cca90, type: 3}
+>>>>>>> 0b19ef9 (プロトタイプ)
 =======
   m_Sprite: {fileID: 2245057889504884635, guid: 7a7db2e2ec2f6e54ca65c67f5d3cca90, type: 3}
 >>>>>>> 0b19ef9 (プロトタイプ)
@@ -1253,10 +1320,14 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!4 &2086715323
 =======
 --- !u!4 &1020514475
 >>>>>>> 06299d3 (test)
+=======
+--- !u!4 &2086715323
+>>>>>>> 0b19ef9 (プロトタイプ)
 =======
 --- !u!4 &2086715323
 >>>>>>> 0b19ef9 (プロトタイプ)
@@ -1267,6 +1338,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 0b19ef9 (プロトタイプ)
 =======
 >>>>>>> 0b19ef9 (プロトタイプ)
   m_GameObject: {fileID: 2086715316}
@@ -1274,6 +1348,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.48, y: -2.38, z: 0}
   m_LocalScale: {x: 0.05, y: 0.05, z: 1}
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
   m_GameObject: {fileID: 1020514471}
@@ -1284,10 +1359,13 @@ Transform:
 >>>>>>> 06299d3 (test)
 =======
 >>>>>>> 0b19ef9 (プロトタイプ)
+=======
+>>>>>>> 0b19ef9 (プロトタイプ)
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 --- !u!114 &2086715324
@@ -1300,12 +1378,19 @@ CapsuleCollider2D:
 --- !u!114 &2086715324
 MonoBehaviour:
 >>>>>>> 0b19ef9 (プロトタイプ)
+=======
+--- !u!114 &2086715324
+MonoBehaviour:
+>>>>>>> 0b19ef9 (プロトタイプ)
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 0b19ef9 (プロトタイプ)
 =======
 >>>>>>> 0b19ef9 (プロトタイプ)
   m_GameObject: {fileID: 2086715316}
@@ -1474,6 +1559,7 @@ RectTransform:
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   m_GameObject: {fileID: 1020514471}
   m_Enabled: 1
@@ -1507,6 +1593,8 @@ RectTransform:
 >>>>>>> 06299d3 (test)
 =======
 >>>>>>> 0b19ef9 (プロトタイプ)
+=======
+>>>>>>> 0b19ef9 (プロトタイプ)
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1515,6 +1603,9 @@ SceneRoots:
   - {fileID: 421190799}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 0b19ef9 (プロトタイプ)
 =======
 >>>>>>> 0b19ef9 (プロトタイプ)
   - {fileID: 2086715323}
@@ -1524,9 +1615,12 @@ SceneRoots:
   - {fileID: 1309432523}
   - {fileID: 1382988669}
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   - {fileID: 1020514475}
   - {fileID: 927082101}
 >>>>>>> 06299d3 (test)
+=======
+>>>>>>> 0b19ef9 (プロトタイプ)
 =======
 >>>>>>> 0b19ef9 (プロトタイプ)

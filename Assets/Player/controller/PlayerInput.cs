@@ -7,11 +7,16 @@ public class PlayerInput : MonoBehaviour
     private PlayerMovement movement;
     private PlayerAttacker attacker; // y’Ç‰ÁzUŒ‚ƒXƒNƒŠƒvƒg‚ÌQÆ
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 <<<<<<<< HEAD:Assets/Player/controller/PlayerInput.cs
 
 ========
 >>>>>>>> 0b19ef9 (ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—):Assets/Player/PlayerInput.cs
+=======
+    private NinjutsuHandler ninjutsuHandler;
+
+>>>>>>> 0b19ef9 (ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—)
 =======
     private NinjutsuHandler ninjutsuHandler;
 
@@ -23,6 +28,7 @@ public class PlayerInput : MonoBehaviour
         movement = GetComponent<PlayerMovement>();
         attacker = GetComponent<PlayerAttacker>(); // y’Ç‰ÁzPlayerAttacker‚ÌQÆ‚ğæ“¾
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<<< HEAD:Assets/Player/controller/PlayerInput.cs
 <<<<<<<< HEAD:Assets/Player/controller/PlayerInput.cs
         ninjutsuHandler = GetComponent<NinjutsuHandler>();
@@ -33,6 +39,9 @@ public class PlayerInput : MonoBehaviour
 
        
 >>>>>>>> 0b19ef9 (ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—):Assets/Player/PlayerInput.cs
+=======
+        ninjutsuHandler = GetComponent<NinjutsuHandler>();
+>>>>>>> 0b19ef9 (ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—)
 =======
         ninjutsuHandler = GetComponent<NinjutsuHandler>();
 >>>>>>> 0b19ef9 (ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—)
@@ -79,7 +88,10 @@ public class PlayerInput : MonoBehaviour
         }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<<< HEAD:Assets/Player/controller/PlayerInput.cs
+=======
+>>>>>>> 0b19ef9 (ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—)
 =======
 >>>>>>> 0b19ef9 (ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—)
         // --- ”Ep”­“®‚Ì“ü—Í (EƒL[‚ğg—p) ---
@@ -103,7 +115,10 @@ public class PlayerInput : MonoBehaviour
         }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<<< HEAD:Assets/Player/controller/PlayerInput.cs
+=======
+>>>>>>> 0b19ef9 (ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—)
 =======
 >>>>>>> 0b19ef9 (ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—)
         if (Input.GetKeyDown(KeyCode.R))
@@ -115,6 +130,7 @@ public class PlayerInput : MonoBehaviour
 
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
 ========
     }
@@ -125,6 +141,9 @@ public class PlayerInput : MonoBehaviour
 }
 
 >>>>>>>> 0b19ef9 (ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—):Assets/Player/PlayerInput.cs
+=======
+}
+>>>>>>> 0b19ef9 (ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—)
 =======
 }
 >>>>>>> 0b19ef9 (ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—)
