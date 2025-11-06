@@ -63,6 +63,8 @@ public class FollowMove : MoveComponent
             owner.Data.moveSpeed * Time.deltaTime
         );
 
+        OnDrawGizmos();
+
         // ... (スプライト反転ロジックなど)
     }
 

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -8826678230119311165}
   - component: {fileID: 2986937979505548690}
   - component: {fileID: -5527356501370884825}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PetBottle Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}

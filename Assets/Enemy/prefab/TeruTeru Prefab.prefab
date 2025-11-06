@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -714669296315433214}
   - component: {fileID: -3968304295632037846}
   - component: {fileID: 1649782359840645089}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TeruTeru Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}

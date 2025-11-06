@@ -6,45 +6,15 @@ public class PlayerInput : MonoBehaviour
     // s“®‚ğˆ—‚·‚éƒXƒNƒŠƒvƒg‚Ö‚ÌQÆ
     private PlayerMovement movement;
     private PlayerAttacker attacker; // y’Ç‰ÁzUŒ‚ƒXƒNƒŠƒvƒg‚ÌQÆ
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-<<<<<<<< HEAD:Assets/Player/controller/PlayerInput.cs
-
-========
->>>>>>>> 0b19ef9 (ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—):Assets/Player/PlayerInput.cs
-=======
     private NinjutsuHandler ninjutsuHandler;
 
->>>>>>> 0b19ef9 (ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—)
-=======
-    private NinjutsuHandler ninjutsuHandler;
-
->>>>>>> 0b19ef9 (ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—)
 
     void Start()
     {
         // “¯‚¶ƒQ[ƒ€ƒIƒuƒWƒFƒNƒg‚ÉƒAƒ^ƒbƒ`‚³‚ê‚Ä‚¢‚é‘¼‚ÌƒXƒNƒŠƒvƒg‚ğæ“¾
         movement = GetComponent<PlayerMovement>();
         attacker = GetComponent<PlayerAttacker>(); // y’Ç‰ÁzPlayerAttacker‚ÌQÆ‚ğæ“¾
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<<< HEAD:Assets/Player/controller/PlayerInput.cs
-<<<<<<<< HEAD:Assets/Player/controller/PlayerInput.cs
         ninjutsuHandler = GetComponent<NinjutsuHandler>();
-========
-========
->>>>>>>> 0b19ef9 (ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—):Assets/Player/PlayerInput.cs
-       
-
-       
->>>>>>>> 0b19ef9 (ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—):Assets/Player/PlayerInput.cs
-=======
-        ninjutsuHandler = GetComponent<NinjutsuHandler>();
->>>>>>> 0b19ef9 (ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—)
-=======
-        ninjutsuHandler = GetComponent<NinjutsuHandler>();
->>>>>>> 0b19ef9 (ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—)
     }
 
     void Update()
@@ -87,13 +57,6 @@ public class PlayerInput : MonoBehaviour
             }
         }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<<< HEAD:Assets/Player/controller/PlayerInput.cs
-=======
->>>>>>> 0b19ef9 (ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—)
-=======
->>>>>>> 0b19ef9 (ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—)
         // --- ”Ep”­“®‚Ì“ü—Í (EƒL[‚ğg—p) ---
         if (ninjutsuHandler != null)
         {
@@ -114,13 +77,6 @@ public class PlayerInput : MonoBehaviour
             }
         }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<<< HEAD:Assets/Player/controller/PlayerInput.cs
-=======
->>>>>>> 0b19ef9 (ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—)
-=======
->>>>>>> 0b19ef9 (ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—)
         if (Input.GetKeyDown(KeyCode.R))
         {
             // yV‹KzƒfƒoƒbƒOƒƒO‚Ì’Ç‰Á
@@ -129,21 +85,4 @@ public class PlayerInput : MonoBehaviour
         }
 
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
 }
-========
-    }
-========
-    }
->>>>>>>> 0b19ef9 (ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—):Assets/Player/PlayerInput.cs
-
-}
-
->>>>>>>> 0b19ef9 (ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—):Assets/Player/PlayerInput.cs
-=======
-}
->>>>>>> 0b19ef9 (ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—)
-=======
-}
->>>>>>> 0b19ef9 (ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—)

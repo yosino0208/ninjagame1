@@ -5,28 +5,16 @@ public class PlayerActionInput : MonoBehaviour // ƒNƒ‰ƒX–¼‚ğ•ÏX
 {
     // s“®‚ğˆ—‚·‚éƒXƒNƒŠƒvƒg‚Ö‚ÌQÆ
     private PlayerMovement movement;
-<<<<<<<< HEAD:Assets/Player/controller/PlayerActionInput.cs
     private PlayerAttacker attacker; // UŒ‚ƒXƒNƒŠƒvƒg‚ÌQÆ
     private NinjutsuHandler ninjutsuHandler;
-========
-    private PlayerAttacker attacker; // y’Ç‰ÁzUŒ‚ƒXƒNƒŠƒvƒg‚ÌQÆ
-
->>>>>>>> 0b19ef9 (ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—):Assets/Player/PlayerInput.cs
 
 
     void Start()
     {
         // “¯‚¶ƒQ[ƒ€ƒIƒuƒWƒFƒNƒg‚ÉƒAƒ^ƒbƒ`‚³‚ê‚Ä‚¢‚é‘¼‚ÌƒXƒNƒŠƒvƒg‚ğæ“¾
         movement = GetComponent<PlayerMovement>();
-<<<<<<<< HEAD:Assets/Player/controller/PlayerActionInput.cs
         attacker = GetComponent<PlayerAttacker>();
         ninjutsuHandler = GetComponent<NinjutsuHandler>();
-========
-        attacker = GetComponent<PlayerAttacker>(); // y’Ç‰ÁzPlayerAttacker‚ÌQÆ‚ğæ“¾
-       
-
-       
->>>>>>>> 0b19ef9 (ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—):Assets/Player/PlayerInput.cs
     }
 
     void Update()
@@ -69,7 +57,6 @@ public class PlayerActionInput : MonoBehaviour // ƒNƒ‰ƒX–¼‚ğ•ÏX
             }
         }
 
-<<<<<<<< HEAD:Assets/Player/controller/PlayerActionInput.cs
         // --- ”Ep”­“®‚Ì“ü—Í (EƒL[‚ğg—p) ---
         if (ninjutsuHandler != null)
         {
@@ -92,9 +79,3 @@ public class PlayerActionInput : MonoBehaviour // ƒNƒ‰ƒX–¼‚ğ•ÏX
 
     }
 }
-========
-    }
-
-}
-
->>>>>>>> 0b19ef9 (ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—):Assets/Player/PlayerInput.cs

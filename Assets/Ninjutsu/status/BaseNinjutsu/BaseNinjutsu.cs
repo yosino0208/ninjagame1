@@ -19,6 +19,9 @@ public abstract class BaseNinjutsu : ScriptableObject
     public float duration = 2.0f;
     public float resourceCost = 1;
 
+    [Header("Speed Variance")]
+    public float speedVariance = 3.0f;    // 速度のランダムな振れ幅 (例: ±3.0f)
+
     // 具体的な動きを定義する抽象メソッド。実装は子クラスの Activate が行う。
     public abstract void Activate(Vector3 originPosition, Vector3 direction, Transform caster);
 

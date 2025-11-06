@@ -16,7 +16,7 @@ MonoBehaviour:
   maxHP: 10
   attackDamage: 10
   moveSpeed: 3
-  detectionRange: 1
+  detectionRange: 3
   moveComponentNames:
   - FollowMove
   attackComponentNames:
