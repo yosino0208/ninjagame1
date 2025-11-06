@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ba720843b47b524889cfb53280a6097, type: 3}
+  m_Name: PetBottleData
+  m_EditorClassIdentifier: 
+  enemyName: Unknown Enemy
+  maxHP: 10
+  attackDamage: 10
+  moveSpeed: 3
+  detectionRange: 1
+  moveComponentNames:
+  - FollowMove
+  attackComponentNames:
+  - MeleeAttack
+  projectilePrefab: {fileID: 8501790350191461097, guid: 2c9487470434490429fd44e07e2af7f9, type: 3}

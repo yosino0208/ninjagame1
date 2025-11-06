@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05427f45fce153f42aabb785d388a1c7, type: 3}
+  m_Name: WindNinjutsu
+  m_EditorClassIdentifier: 
+  ninjutsuName: "\u98A8"
+  icon: {fileID: 21300000, guid: a2045db5ca66ef6438bc5b9f8a41ef3f, type: 3}
+  type: 3
+  projectilePrefab: {fileID: 8314925652586673385, guid: c17c5a4a668178f45a97153b8f6b1d5f, type: 3}
+  launchSpeed: 10
+  damage: 1
+  duration: 5
+  resourceCost: 1
