@@ -11,10 +11,14 @@ TagManager:
   - TransparentFX
   - Ignore Raycast
 <<<<<<< HEAD
+<<<<<<< HEAD
   - Camera
 =======
   - Ground
 >>>>>>> 06299d3 (test)
+=======
+  - Camera
+>>>>>>> 0b19ef9 (プロトタイプ)
   - Water
   - UI
   - 
