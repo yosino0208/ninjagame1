@@ -1,43 +1,24 @@
 // PlayerAttacker.cs
-using NinjaGame;
 using UnityEngine;
 
 public class PlayerAttacker : MonoBehaviour
 {
-    private PlayerStatus status;
-    private PlayerController controller; // PlayerControllerへの参照
-
-    // 投擲するクナイのPrefab
-    [Header("クナイ設定")]
-    [SerializeField] private GameObject kunaiPrefab;
-
     [Header("発射設定")]
     public float kunaiHorizontalOffset = 0.5f; // 発射オフセット
-    public float throwSpeed = 15.0f;           // クナイの投てき速度
-
-    public void SetStatusReference(PlayerStatus statusReference)
-    {
-        status = statusReference;
-    }
-
-    // PlayerControllerからの参照を受け取るメソッド (DI用)
-    public void SetControllerReference(PlayerController controllerReference)
-    {
-        controller = controllerReference;
-    }
+    public float throwSpeed = 15.0f;           // クナイの投てき速度 (Poolから借りた後に設定)
 
     void Start()
     {
-        if (kunaiPrefab == null)
+        // Poolがシーンにあるか確認 (FactoryチェックをPoolチェックに変更)
+        if (KunaiPool.Instance == null)
         {
-            Debug.LogError("PlayerAttacker: kunaiPrefabが設定されていません。クナイを投げるにはPrefabを設定してください。", this);
+            Debug.LogError("KunaiPoolがシーンに見つかりません。ゲームオブジェクトにアタッチし、プレハブを設定してください。");
         }
     }
 
     public void ThrowAttack()
     {
-        // ⭐ 【変更点】Prefabが設定されていない場合は処理を中止
-        if (kunaiPrefab == null) return;
+        if (KunaiPool.Instance == null) return;
 
         // プレイヤーの向きを取得
         float directionX = transform.localScale.x > 0 ? 1f : -1f;
@@ -46,12 +27,12 @@ public class PlayerAttacker : MonoBehaviour
         Vector3 spawnPosition = transform.position + new Vector3(directionX * kunaiHorizontalOffset, 0, 0);
         Vector2 throwDirection = new Vector2(directionX, 0);
 
-
-        GameObject newKunai = Instantiate(kunaiPrefab, spawnPosition, Quaternion.identity);
+        // 2. 【変更点】Poolからオブジェクトを借りる
+        GameObject newKunai = KunaiPool.Instance.SpawnKunai(spawnPosition, Quaternion.identity);
 
         if (newKunai != null)
         {
-            // 2. 生成したクナイに速度と方向を設定
+            // 3. 借りたクナイに速度と方向を設定
             Rigidbody2D kunaiRb = newKunai.GetComponent<Rigidbody2D>();
             if (kunaiRb != null)
             {
@@ -60,10 +41,6 @@ public class PlayerAttacker : MonoBehaviour
 
                 // 速度を設定
                 kunaiRb.velocity = throwDirection * throwSpeed;
-            }
-            else
-            {
-                Debug.LogWarning($"生成されたクナイ ({kunaiPrefab.name}) に Rigidbody2D が見つかりません。", newKunai);
             }
         }
     }

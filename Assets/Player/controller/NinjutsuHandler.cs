@@ -16,7 +16,6 @@ public class NinjutsuHandler : MonoBehaviour
     // UI Managerへの参照
     private NinjutsuUIManager uiManager;
 
-
     // 次に使用する忍術スロットのインデックス
     [SerializeField]
     private int nextSlotIndex = 0;
@@ -25,36 +24,17 @@ public class NinjutsuHandler : MonoBehaviour
     private float cooldownTime = 0.5f;
     private float lastUseTime = 0f;
 
-    private PlayerController controller; // PlayerControllerへの参照を追加
-
     void Start()
     {
-        uiManager = FindObjectOfType<NinjutsuUIManager>();
-
+        // UI Managerの参照を取得 (同じGameObjectにアタッチされていることが前提)
+        uiManager = GetComponent<NinjutsuUIManager>();
         if (uiManager == null)
         {
-            // 以前のエラーが出た行に相当
-            Debug.LogError("NinjutsuHandler: NinjutsuUIManagerが見つかりません。独立したUIオブジェクトにアタッチされているか確認してください。");
+           // Debug.LogError("NinjutsuHandler: NinjutsuUIManagerが見つかりません。同じGameObjectにアタッチしてください。");
         }
-
     }
 
-    public void SetControllerReference(PlayerController controllerReference)
-    {
-        controller = controllerReference;
-    }
-
-    private void TriggerCastAnimation()
-    {
-
-        if (controller != null)
-        {
-            controller.TriggerNinjutsuAttackAnimation();
-        }
-
-    }
-
-    // 複合技の判定を優先し、なければ単発技として処理する
+    // 【Eキー】複合技の判定を優先し、なければ単発技として処理する
     public void UseNinjutsuComboOrSingle()
     {
         if (Time.time < lastUseTime + cooldownTime) return; // クールダウンチェック
@@ -66,11 +46,9 @@ public class NinjutsuHandler : MonoBehaviour
 
         Vector3 direction = new Vector3(transform.localScale.x, 0, 0);
 
-        // 複合技が発動した場合 (静的呼び出しからインスタンス呼び出しへ変更)
-        if (controller.NinjutsuCombiner.TryActivateCombo(elements, transform.position, direction, this.transform))
+        // 複合技が発動した場合
+        if (NinjutsuCombiner.TryActivateCombo(elements, transform.position, direction, this.transform))
         {
-            TriggerCastAnimation();
-
             Debug.Log("一致");
             // 複合技が発動した場合、すべてのスロットをクリアする
             for (int i = 0; i < SET_SIZE; i++)
@@ -79,7 +57,6 @@ public class NinjutsuHandler : MonoBehaviour
             }
             nextSlotIndex = 0;
             lastUseTime = Time.time;
-            if (uiManager != null) uiManager.UpdateUI(currentNinjutsuSet, nextSlotIndex);
 
             return;
         }
@@ -101,7 +78,6 @@ public class NinjutsuHandler : MonoBehaviour
 
         if (usedNinjutsu != null)
         {
-            TriggerCastAnimation();
             Vector3 direction = new Vector3(transform.localScale.x, 0, 0);
             usedNinjutsu.Activate(transform.position, direction, this.transform);
 
@@ -123,14 +99,42 @@ public class NinjutsuHandler : MonoBehaviour
         }
     }
 
-    // リスト（配列）に残っている忍術をすべて使うメソッド
+    // 【Qキー/Wキーから移行した機能】リスト（配列）に残っている忍術をすべて使うメソッド
     public void UseAllRemainingNinjutsu()
     {
         if (Time.time < lastUseTime + cooldownTime) return; // クールダウンチェック
 
-        Debug.Log("【一斉発動】: 残りの忍術をすべて使います！");
+        // 1. 複合技が発動可能かチェック (UseNinjutsuComboOrSingleからロジックを移植)
+        NinjutsuElement[] elements = currentNinjutsuSet
+            .Select(n => n != null ? n.type : NinjutsuElement.None)
+            .ToArray();
 
         Vector3 direction = new Vector3(transform.localScale.x, 0, 0);
+
+        // 複合技が発動した場合
+        if (NinjutsuCombiner.TryActivateCombo(elements, transform.position, direction, this.transform))
+        {
+            Debug.Log("【一斉発動】: 複合技が一致しました！");
+            // 複合技が発動した場合、すべてのスロットをクリアする
+            for (int i = 0; i < SET_SIZE; i++)
+            {
+                currentNinjutsuSet[i] = null;
+            }
+            nextSlotIndex = 0;
+            lastUseTime = Time.time;
+
+            // UIを更新し、すべて空になったことを表示
+            if (uiManager != null)
+            {
+                uiManager.UpdateUI(currentNinjutsuSet, nextSlotIndex);
+            }
+
+            return; // 複合技が発動したため、単発の一斉発動は行わない
+        }
+
+        // 2. 複合技が発動しなかった場合、リスト（配列）に残っている忍術をすべて使う (元のロジック)
+
+        Debug.Log("【一斉発動】: 複合技は不成立。残りの忍術をすべて単発で使います！");
         bool usedAtLeastOne = false;
 
         // nextSlotIndexから最後までをチェック
@@ -140,7 +144,6 @@ public class NinjutsuHandler : MonoBehaviour
 
             if (usedNinjutsu != null)
             {
-                TriggerCastAnimation();
                 // 忍術の発動ロジックを呼び出す
                 usedNinjutsu.Activate(transform.position, direction, this.transform);
 
@@ -172,17 +175,56 @@ public class NinjutsuHandler : MonoBehaviour
         }
     }
 
+    //public void UseAllRemainingNinjutsu()
+    //{
+    //    if (Time.time < lastUseTime + cooldownTime) return; // クールダウンチェック
+
+    //    Debug.Log("【一斉発動】: 残りの忍術をすべて使います！");
+
+    //    Vector3 direction = new Vector3(transform.localScale.x, 0, 0);
+    //    bool usedAtLeastOne = false;
+
+    //    // nextSlotIndexから最後までをチェック
+    //    for (int i = nextSlotIndex; i < SET_SIZE; i++)
+    //    {
+    //        BaseNinjutsu usedNinjutsu = currentNinjutsuSet[i];
+
+    //        if (usedNinjutsu != null)
+    //        {
+    //            // 忍術の発動ロジックを呼び出す
+    //            usedNinjutsu.Activate(transform.position, direction, this.transform);
+
+    //            // 発動後、スロットをクリア
+    //            currentNinjutsuSet[i] = null;
+    //            usedAtLeastOne = true;
+
+    //            Debug.Log($"一斉発動！ Slot {i + 1} ({usedNinjutsu.ninjutsuName}) を消費しました。");
+    //        }
+    //    }
+
+    //    // 1つでも忍術を使ったら、クールダウンを更新し、インデックスとUIをリセット
+    //    if (usedAtLeastOne)
+    //    {
+    //        lastUseTime = Time.time;
+
+    //        // すべて使い切ったので、次スロットインデックスを SET_SIZE に設定
+    //        nextSlotIndex = SET_SIZE;
+
+    //        // UIを更新し、すべて空になったことを表示
+    //        if (uiManager != null)
+    //        {
+    //            uiManager.UpdateUI(currentNinjutsuSet, nextSlotIndex);
+    //        }
+    //    }
+    //    else
+    //    {
+    //        Debug.LogWarning("残りのスロットに使える忍術はありませんでした。");
+    //    }
+    //}
+
     // 【Rキー】乱数を生成し、忍術セットを初期化する
     public void GenerateAndSetRandomNinjutsu()
     {
-
-        // allNinjutsuListからnull要素を排除（インスペクター設定ミス対策）
-        if (allNinjutsuList != null)
-        {
-            // 既存のリストからnullでない要素のみを抽出し、リストを再構築
-            allNinjutsuList = allNinjutsuList.Where(n => n != null).ToList();
-        }
-
         if (allNinjutsuList == null || allNinjutsuList.Count < SET_SIZE)
         {
             Debug.LogError($"NinjutsuHandler: 忍術セットに必要なデータが不足しています。全忍術データ({allNinjutsuList?.Count ?? 0})が{SET_SIZE}個未満です。");
@@ -203,6 +245,7 @@ public class NinjutsuHandler : MonoBehaviour
 
         Debug.Log("新しい巻物セットが決定し、スロット回転が開始されました！");
     }
+
 
     // 内部用：重複を許して乱数インデックスを生成する関数
     private List<int> GenerateRandomIndices(int maxIndexExclusive, int count)
@@ -262,4 +305,16 @@ public class NinjutsuHandler : MonoBehaviour
         Debug.Log("新しい巻物セットが完了しました！");
     }
 
+    // --- デバッグ表示 ---
+
+    void Update()
+    {
+        DisplayCurrentStockDebug();
+    }
+
+
+    private void DisplayCurrentStockDebug()
+    {
+        // ... (デバッグログのロジックは省略) ...
+    }
 }

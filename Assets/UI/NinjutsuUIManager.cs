@@ -1,99 +1,81 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq; // ToList() のために必要
-using NinjaGame;
+using System.Collections.Generic; 
+
 
 public class NinjutsuUIManager : MonoBehaviour
 {
     [Header("スロット回転設定")]
-    public float spinDuration = 0.8f;
+    public float spinDuration = 0.8f; // 各スロットが回る基本時間
     public float stopDelay = 0.2f;
-    public int spinFramesPerSlot = 15; // スロット一つあたりに切り替わるアイコンの回数
 
+    // Handlerから参照を渡されるUI要素の配列
     [Header("UI要素の参照")]
     public Image[] ninjutsuIconSlots;
 
+    // UIのハイライト色設定
     [Header("UI要素の色設定")]
     public Color defaultColor = Color.white;
     public Color activeColor = Color.yellow;
 
 
-    // Handlerから呼ばれ、回転アニメーションを開始するメソッド
+    // 追加: Handlerから呼ばれ、回転アニメーションを開始するメソッド
     public void StartSlotSpin(BaseNinjutsu[] finalSet, List<BaseNinjutsu> allList)
     {
-        StopAllCoroutines();
-
-        // 念のため、最終セットと全リストからNull要素を除去
-        List<BaseNinjutsu> cleanAllList = allList.Where(n => n != null).ToList();
-
-        StartCoroutine(SpinSlotsCoroutine(finalSet, cleanAllList));
+        // 最終的なセット内容と、回転中にランダム表示するための全リストを受け取る
+        StartCoroutine(SpinSlotsCoroutine(finalSet, allList));
     }
 
-    private IEnumerator SpinSlotsCoroutine(BaseNinjutsu[] finalSet, List<BaseNinjutsu> cleanAllList)
+    private IEnumerator SpinSlotsCoroutine(BaseNinjutsu[] finalSet, List<BaseNinjutsu> allList)
     {
         int slotCount = ninjutsuIconSlots.Length;
         float elapsedTime = 0f;
 
-        if (cleanAllList.Count == 0)
+        // 各スロットが止まるべき目標時間（スロットごとに遅延を設ける）
+        float[] stopTimes = new float[slotCount];
+        for (int i = 0; i < slotCount; i++)
         {
-            Debug.LogError("NinjutsuUIManager: 回転用の有効な忍術データがありません。");
-            UpdateUI(finalSet, 0);
-            yield break;
+            stopTimes[i] = spinDuration + i * stopDelay;
         }
 
-        // 【安全な回転ロジック】
-        // 1. 回転中に表示する全アイコンのリストを事前に作成
-        List<BaseNinjutsu> spinDisplayList = new List<BaseNinjutsu>();
-        for (int i = 0; i < slotCount * spinFramesPerSlot; i++)
-        {
-            // ここでランダムアクセスを一度だけ行い、コルーチン内での再アクセスを防ぐ
-            int randomIndex = Random.Range(0, cleanAllList.Count);
-            spinDisplayList.Add(cleanAllList[randomIndex]);
-        }
-
-        float totalSpinTime = spinDuration + (slotCount - 1) * stopDelay;
-        int currentIconIndex = 0; // spinDisplayListの現在のインデックス
-
-        // --- コルーチンのループ ---
-
-        while (elapsedTime < totalSpinTime)
+        // 最後のスロットが止まるまでループ
+        while (elapsedTime < stopTimes[slotCount - 1])
         {
             elapsedTime += Time.deltaTime;
-
-            // アイコンを切り替えるフレームを計算 (高速回転)
-            // 速度に比例してインデックスを進める
-            currentIconIndex = Mathf.FloorToInt(elapsedTime * (spinDisplayList.Count / totalSpinTime));
 
             for (int i = 0; i < slotCount; i++)
             {
                 Image slotImage = ninjutsuIconSlots[i];
                 if (slotImage == null) continue;
 
-                // 各スロットの停止時間をチェック
-                if (elapsedTime < spinDuration + i * stopDelay)
+                if (elapsedTime < stopTimes[i])
                 {
-                    // spinDisplayListから安全にアイコンを取得
-                    int displayIndex = (currentIconIndex + i) % spinDisplayList.Count;
-                    BaseNinjutsu ninjutsu = spinDisplayList[displayIndex];
-
-                    if (ninjutsu != null && ninjutsu.icon != null)
+                    // 回転中: 全リストからランダムなアイコンを高速表示
+                    if (allList != null && allList.Count > 0)
                     {
-                        slotImage.sprite = ninjutsu.icon;
-                        slotImage.enabled = true;
-                        slotImage.color = activeColor;
+                        int randomIndex = Random.Range(0, allList.Count);
+                        BaseNinjutsu randomNinjutsu = allList[randomIndex];
+
+                        if (randomNinjutsu != null && randomNinjutsu.icon != null)
+                        {
+                            slotImage.sprite = randomNinjutsu.icon;
+                            slotImage.enabled = true;
+                            slotImage.color = activeColor; // 回転中はハイライト色で強調
+                        }
                     }
                 }
                 else
                 {
-                    // 停止済み: 最終結果を表示
+                    // 停止済み: 最終的に決定したアイコンを表示し、色をデフォルトに戻す
+                    // finalSetに格納されている決定アイコンを表示
                     if (finalSet[i] != null && finalSet[i].icon != null)
                     {
                         slotImage.sprite = finalSet[i].icon;
                         slotImage.enabled = true;
                         slotImage.color = defaultColor;
                     }
+                    // ただし、ランダムな結果でスロットが空になった場合も考慮
                     else
                     {
                         slotImage.sprite = null;
@@ -103,18 +85,21 @@ public class NinjutsuUIManager : MonoBehaviour
                 }
             }
 
-            yield return null;
+            yield return null; // 1フレーム待機
         }
 
-        // アニメーション終了
+        // すべての回転アニメーションが終了した後、最終結果としてUIを更新（nextIndex=0でハイライトも設定される）
         UpdateUI(finalSet, 0);
     }
 
-    // Handlerがこのメソッドを呼び出す
+    // ハンドラーがこのメソッドを呼び出す
+    // 新しいセットが生成されたとき、または忍術が使用されたときに呼ばれる
     public void UpdateUI(BaseNinjutsu[] currentSet, int nextIndex)
     {
+        // 1. 全スロットの初期化と更新
         for (int i = 0; i < currentSet.Length; i++)
         {
+            // UIスロットが存在し、かつ参照がnullでないか確認
             if (i < ninjutsuIconSlots.Length && ninjutsuIconSlots[i] != null)
             {
                 BaseNinjutsu ninjutsu = currentSet[i];
@@ -122,12 +107,15 @@ public class NinjutsuUIManager : MonoBehaviour
 
                 if (ninjutsu != null)
                 {
+                    // スプライトを設定
                     slotImage.sprite = ninjutsu.icon;
                     slotImage.enabled = true;
+                    // ハイライトを設定
                     slotImage.color = (i == nextIndex) ? activeColor : defaultColor;
                 }
                 else
                 {
+                    // 消費または空のスロットの場合
                     slotImage.sprite = null;
                     slotImage.enabled = false;
                     slotImage.color = defaultColor;
@@ -135,13 +123,14 @@ public class NinjutsuUIManager : MonoBehaviour
             }
         }
 
-        // すべて使い切った後の処理
+        // 2. すべて使い切った後の処理 (nextIndexが配列外になった場合)
         if (nextIndex >= currentSet.Length)
         {
             foreach (var slot in ninjutsuIconSlots)
             {
                 if (slot != null)
                 {
+                    // すべての色をデフォルトに戻す（ハイライト解除）
                     slot.color = defaultColor;
                 }
             }
