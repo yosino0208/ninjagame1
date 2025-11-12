@@ -1,0 +1,576 @@
+fileFormatVersion: 2
+guid: 904e77bb6627ed44f8640aa0db860b7b
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ninja_taiki_0
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 5200
+        width: 446
+        height: 1300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a1a2026614cae644ba316ad97b763b0
+      internalID: 1809759091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ninja_taiki_1
+      rect:
+        serializedVersion: 2
+        x: 461
+        y: 5200
+        width: 446
+        height: 1300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51c57f0db71bc5348a4535b46fb590b5
+      internalID: 2143700532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ninja_taiki_2
+      rect:
+        serializedVersion: 2
+        x: 917
+        y: 5200
+        width: 446
+        height: 1300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae4a8b41313f18a448d3a2219c6bb2e2
+      internalID: -1584928340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ninja_taiki_3
+      rect:
+        serializedVersion: 2
+        x: 1373
+        y: 5200
+        width: 446
+        height: 1300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0de32960cd7356841a2898ce1a3aec65
+      internalID: -887283592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ninja_taiki_4
+      rect:
+        serializedVersion: 2
+        x: 1829
+        y: 5200
+        width: 446
+        height: 1300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7112501c5accfd148bed7a7a21c3d89f
+      internalID: -1742023516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ninja_taiki_5
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 3900
+        width: 446
+        height: 1300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 513414cb74f1fe14da34f52d37b0a39e
+      internalID: 434075940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ninja_taiki_6
+      rect:
+        serializedVersion: 2
+        x: 461
+        y: 3900
+        width: 446
+        height: 1300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe810f23c08504d479350a8648fa9b81
+      internalID: -445164576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ninja_taiki_7
+      rect:
+        serializedVersion: 2
+        x: 917
+        y: 3900
+        width: 446
+        height: 1300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 583acd4a1301d75418f0e19e06deedc3
+      internalID: 707253661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ninja_taiki_8
+      rect:
+        serializedVersion: 2
+        x: 1373
+        y: 3900
+        width: 446
+        height: 1300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16761ba243d1ec34da0b607f14afc1eb
+      internalID: -1436084023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ninja_taiki_9
+      rect:
+        serializedVersion: 2
+        x: 1829
+        y: 3900
+        width: 446
+        height: 1300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e8bbc93030246b469515ea3eae05106
+      internalID: 1447134324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ninja_taiki_10
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 2600
+        width: 446
+        height: 1300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8cdf826a31019a47b3c86c13db788e7
+      internalID: 1017726867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ninja_taiki_11
+      rect:
+        serializedVersion: 2
+        x: 461
+        y: 2600
+        width: 446
+        height: 1300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e512ba13e01de1644ba673be15170088
+      internalID: 650541501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ninja_taiki_12
+      rect:
+        serializedVersion: 2
+        x: 917
+        y: 2600
+        width: 446
+        height: 1300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 782abd5cae3253347a86d7428708d3f0
+      internalID: -2033738646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ninja_taiki_13
+      rect:
+        serializedVersion: 2
+        x: 1373
+        y: 2600
+        width: 446
+        height: 1300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab018960aedeb9f4d833cc98c56fc256
+      internalID: 968379245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ninja_taiki_14
+      rect:
+        serializedVersion: 2
+        x: 1829
+        y: 2600
+        width: 446
+        height: 1300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de37461109464314c9ef2bee70aa2adc
+      internalID: 1215773186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ninja_taiki_15
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 1300
+        width: 446
+        height: 1300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1980f2186331c5449dfc52fe682f68b
+      internalID: -50794435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ninja_taiki_16
+      rect:
+        serializedVersion: 2
+        x: 461
+        y: 1300
+        width: 446
+        height: 1300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a637ec83b0f18b4294b385c4c871bc4
+      internalID: -471636635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ninja_taiki_17
+      rect:
+        serializedVersion: 2
+        x: 917
+        y: 1300
+        width: 446
+        height: 1300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b5a19870db964d45934d206116861aa
+      internalID: 10749479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ninja_taiki_18
+      rect:
+        serializedVersion: 2
+        x: 1373
+        y: 1300
+        width: 446
+        height: 1300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5730fb3bc2fc994c914a5e75ca73deb
+      internalID: 268401280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ninja_taiki_19
+      rect:
+        serializedVersion: 2
+        x: 1829
+        y: 1300
+        width: 446
+        height: 1300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf6b1a5bec069ba40bcf7c9e1af901b2
+      internalID: 1086761219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ninja_taiki_20
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 0
+        width: 446
+        height: 1300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcf31464c94836342ab4093cb0ac6e83
+      internalID: 1798794394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      ninja_taiki_0: 1809759091
+      ninja_taiki_1: 2143700532
+      ninja_taiki_10: 1017726867
+      ninja_taiki_11: 650541501
+      ninja_taiki_12: -2033738646
+      ninja_taiki_13: 968379245
+      ninja_taiki_14: 1215773186
+      ninja_taiki_15: -50794435
+      ninja_taiki_16: -471636635
+      ninja_taiki_17: 10749479
+      ninja_taiki_18: 268401280
+      ninja_taiki_19: 1086761219
+      ninja_taiki_2: -1584928340
+      ninja_taiki_20: 1798794394
+      ninja_taiki_3: -887283592
+      ninja_taiki_4: -1742023516
+      ninja_taiki_5: 434075940
+      ninja_taiki_6: -445164576
+      ninja_taiki_7: 707253661
+      ninja_taiki_8: -1436084023
+      ninja_taiki_9: 1447134324
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
