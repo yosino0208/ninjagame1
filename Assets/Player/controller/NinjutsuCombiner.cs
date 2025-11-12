@@ -2,13 +2,10 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 
-// 複合技の判定と実行を担うマネージャー（シングルトン）
+// 複合技の判定と実行を担うコンポーネント (Playerにアタッチ)
 public class NinjutsuCombiner : MonoBehaviour
 {
     private const int SET_SIZE = 3;
-
-    // シングルトンインスタンス
-    public static NinjutsuCombiner Instance { get; private set; }
 
     [System.Serializable]
     public class ComboDataEntry
@@ -25,17 +22,7 @@ public class NinjutsuCombiner : MonoBehaviour
 
     void Awake()
     {
-        // シングルトン初期化
-        if (Instance == null)
-        {
-            Instance = this;
-            // シーンを跨いで維持する場合: DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
+
 
         // リストを高速検索用のDictionaryに変換
         if (comboDataList != null)
@@ -49,18 +36,15 @@ public class NinjutsuCombiner : MonoBehaviour
         }
     }
 
-    // 外部から静的に呼び出されるエントリポイント
-    public static bool TryActivateCombo(
+
+    // NinjutsuHandlerからGetComponent経由で呼び出されます
+    public bool TryActivateCombo(
         NinjutsuElement[] elements,
         Vector3 originPosition,
         Vector3 direction,
         Transform caster)
     {
-        if (Instance == null)
-        {
-            Debug.LogError("NinjutsuCombinerがシーンに存在しません。");
-            return false;
-        }
+
 
         // 1. 各要素の出現回数をカウント
         Dictionary<NinjutsuElement, int> counts = elements
@@ -74,8 +58,9 @@ public class NinjutsuCombiner : MonoBehaviour
         if (counts.Count == 1 && counts.First().Value == 3)
         {
             NinjutsuElement type = counts.First().Key;
-            // インスタンスメソッドを呼び出す
-            return Instance.TryActivateTripleCombo(type, originPosition, direction, caster);
+
+
+            return TryActivateTripleCombo(type, originPosition, direction, caster);
         }
 
         return false;
